@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global Chronicle</title>
+  <style>
+    :root {
+      --blue: #052962;
+      --red: #c70000;
+      --light: #f6f6f6;
+      --border: #d9d9d9;
+      --text: #121212;
+      --gray: #666;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1280px;
+      margin: auto;
+    }
+
+    /* TOP BAR */
+    .topbar {
+      background: var(--blue);
+      color: white;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      padding: 10px 0;
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .top-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .top-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* HEADER */
+    header {
+      padding: 28px 0 20px;
+      border-bottom: 2px solid var(--blue);
+    }
+
+    .logo {
+      font-size: 54px;
+      font-weight: bold;
+      color: var(--blue);
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .tagline {
+      margin-top: 8px;
+      font-family: Arial, sans-serif;
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    /* NAV */
+    nav {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: white;
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 0;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    nav a:hover {
+      color: var(--blue);
+    }
+
+    .search-box {
+      display: flex;
+      gap: 8px;
+    }
+
+    .search-box input {
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      font-family: Arial, sans-serif;
+      min-width: 220px;
+    }
+
+    .search-box button {
+      padding: 8px 14px;
+      border: none;
+      background: var(--blue);
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* BREAKING */
+    .breaking {
+      background: #fff4f4;
+      border-bottom: 1px solid #f0caca;
+      padding: 12px 0;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+    }
+
+    .breaking span {
+      color: var(--red);
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    /* PAGE SYSTEM */
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* HOME */
+    .main-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 32px;
+      margin-top: 30px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 28px;
+    }
+
+    .category {
+      color: var(--red);
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      letter-spacing: 0.4px;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      line-height: 1.08;
+      margin-bottom: 16px;
+      cursor: pointer;
+    }
+
+    .hero p {
+      font-size: 19px;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+
+    .meta {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #777;
+    }
+
+    .hero img {
+      min-height: 340px;
+      height: 100%;
+    }
+
+    .sub-news {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin: 28px 0;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 28px;
+    }
+
+    .sub-card {
+      border-top: 4px solid var(--blue);
+      padding-top: 12px;
+    }
+
+    .sub-card h3 {
+      font-size: 23px;
+      line-height: 1.25;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .sub-card p {
+      color: var(--gray);
+      font-size: 16px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      color: var(--blue);
+      margin: 28px 0 18px;
+      border-top: 3px solid var(--blue);
+      padding-top: 14px;
+    }
+
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 26px;
+    }
+
+    .article-card {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+      transition: 0.25s;
+      cursor: pointer;
+    }
+
+    .article-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .article-card img {
+      height: 220px;
+      margin-bottom: 14px;
+    }
+
+    .article-card h3 {
+      font-size: 28px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .article-card p {
+      color: var(--gray);
+      font-size: 16px;
+    }
+
+    .sidebar-section {
+      border-top: 4px solid var(--blue);
+      padding-top: 14px;
+      margin-bottom: 32px;
+    }
+
+    .sidebar-section h2 {
+      font-size: 26px;
+      margin-bottom: 16px;
+      color: var(--blue);
+    }
+
+    .sidebar-section ul {
+      list-style: none;
+    }
+
+    .sidebar-section li {
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+
+    .sidebar-section li a {
+      font-size: 18px;
+      line-height: 1.4;
+      display: block;
+    }
+
+    .sidebar-section li a:hover {
+      color: var(--blue);
+    }
+
+    .author {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #777;
+      margin-top: 6px;
+    }
+
+    .newsletter {
+      background: var(--light);
+      padding: 22px;
+      border: 1px solid var(--border);
+    }
+
+    .newsletter h3 {
+      font-size: 24px;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+
+    .newsletter p {
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      color: var(--gray);
+      margin-bottom: 14px;
+    }
+
+    .newsletter input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 12px;
+      font-size: 15px;
+      font-family: Arial, sans-serif;
+    }
+
+    .newsletter button {
+      width: 100%;
+      padding: 12px;
+      background: var(--blue);
+      color: white;
+      border: none;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      cursor: pointer;
+    }
+
+    /* ARTICLE PAGE */
+    .article-page {
+      max-width: 920px;
+      margin: 42px auto;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      font-family: Arial, sans-serif;
+      color: var(--blue);
+      font-weight: bold;
+    }
+
+    .article-page h1 {
+      font-size: 52px;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .article-page .lead {
+      font-size: 24px;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    .article-page img {
+      margin: 24px 0;
+      max-height: 500px;
+      object-fit: cover;
+    }
+
+    .article-content p {
+      font-size: 21px;
+      margin-bottom: 22px;
+      color: #222;
+    }
+
+    .article-content h2 {
+      font-size: 32px;
+      margin: 30px 0 15px;
+      color: var(--blue);
+    }
+
+    .related {
+      margin-top: 50px;
+      border-top: 3px solid var(--blue);
+      padding-top: 20px;
+    }
+
+    .related h3 {
+      font-size: 28px;
+      margin-bottom: 18px;
+      color: var(--blue);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .related-card {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      cursor: pointer;
+    }
+
+    .related-card img {
+      height: 170px;
+      margin-bottom: 10px;
+    }
+
+    .related-card h4 {
+      font-size: 20px;
+      line-height: 1.3;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 60px;
+      background: var(--blue);
+      color: white;
+      padding: 40px 0 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-bottom: 25px;
+    }
+
+    .footer-grid h4 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      font-family: Arial, sans-serif;
+    }
+
+    .footer-grid a {
+      display: block;
+      margin-bottom: 8px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.25);
+      padding-top: 18px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 1000px) {
+      .main-layout,
+      .hero,
+      .sub-news,
+      .article-grid,
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero h1,
+      .article-page h1 {
+        font-size: 36px;
+      }
+
+      .article-content p {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .logo {
+        font-size: 38px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+
+      .search-box input {
+        flex: 1;
+        min-width: unset;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container">
+      <div>Thursday, 26 March 2026</div>
+      <div class="top-links">
+        <a onclick="showPage('home')">Latest</a>
+        <a href="#">Sign in</a>
+        <a href="#">Subscribe</a>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="logo" onclick="showPage('home')">Global Chronicle</div>
+      <div class="tagline">Independent journalism, trusted reporting, global perspective</div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="container">
+      <div class="nav-links">
+        <a onclick="showPage('home')">News</a>
+        <a href="#">World</a>
+        <a href="#">Politics</a>
+        <a href="#">Business</a>
+        <a href="#">Culture</a>
+        <a href="#">Technology</a>
+        <a href="#">Sport</a>
+        <a href="#">Opinion</a>
+      </div>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search article..." />
+        <button onclick="searchArticle()">Search</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="breaking">
+    <div class="container">
+      <span>Breaking:</span> AI regulation, trust in media and digital transformation continue to shape the future of journalism.
+    </div>
+  </div>
+
+  <!-- HOME PAGE -->
+  <section id="home" class="page active">
+    <div class="container">
+      <div class="main-layout">
+
+        <main>
+          <section class="hero">
+            <div>
+              <div class="category">Technology</div>
+              <h1 onclick="openArticle('ai-news')">
+                Artificial intelligence is transforming how readers consume the news
+              </h1>
+              <p>
+                From personalised recommendations to automated summaries, AI is rapidly changing the relationship between media, trust and public information.
+              </p>
+              <div class="meta">By Editorial Team • 26 Mar 2026 • 12 min read</div>
+            </div>
+            <div>
+              <img src="https://picsum.photos/800/500?random=1" alt="Main story" />
+            </div>
+          </section>
+
+          <section class="sub-news">
+            <article class="sub-card">
+              <div class="category">World</div>
+              <h3 onclick="openArticle('ethics-ai')">Global leaders debate the ethics of algorithmic decision-making</h3>
+              <p>Concerns continue to rise over transparency, bias and the future of public accountability.</p>
+            </article>
+
+            <article class="sub-card">
+              <div class="category">Education</div>
+              <h3 onclick="openArticle('students-digital')">Students are relying on digital platforms more than ever before</h3>
+              <p>Classrooms are evolving as schools adopt online tools and AI-powered learning systems.</p>
+            </article>
+
+            <article class="sub-card">
+              <div class="category">Culture</div>
+              <h3 onclick="openArticle('longform-journalism')">Why long-form journalism still matters in the age of short attention spans</h3>
+              <p>Deep reporting remains essential despite the rapid pace of modern media consumption.</p>
+            </article>
+          </section>
+
+          <h2 class="section-title">Latest stories</h2>
+
+          <section class="article-grid">
+            <article class="article-card" onclick="openArticle('markets-tech')">
+              <img src="https://picsum.photos/700/400?random=2" alt="">
+              <div class="category">Business</div>
+              <h3>Markets react cautiously to fresh developments in the tech sector</h3>
+              <p>Investors are watching closely as major firms adjust their strategies in response to AI disruption.</p>
+            </article>
+
+            <article class="article-card" onclick="openArticle('digital-law')">
+              <img src="https://picsum.photos/700/400?random=3" alt="">
+              <div class="category">Politics</div>
+              <h3>Lawmakers propose stricter guidelines for digital platforms</h3>
+              <p>New legislation could reshape how online media companies manage content and misinformation.</p>
+            </article>
+
+            <article class="article-card" onclick="openArticle('sport-season')">
+              <img src="https://picsum.photos/700/400?random=4" alt="">
+              <div class="category">Sport</div>
+              <h3>National teams prepare for a demanding season ahead</h3>
+              <p>Coaches and players are facing pressure to adapt quickly in a highly competitive landscape.</p>
+            </article>
+
+            <article class="article-card" onclick="openArticle('climate-policy')">
+              <img src="https://picsum.photos/700/400?random=5" alt="">
+              <div class="category">Environment</div>
+              <h3>Climate policy moves back to the centre of international debate</h3>
+              <p>Experts warn that the next decade will be critical in determining the pace of environmental change.</p>
+            </article>
+          </section>
+        </main>
+
+        <aside>
+          <div class="sidebar-section">
+            <h2>Most read</h2>
+            <ul>
+              <li><a onclick="openArticle('future-journalism')">Five major shifts changing the future of online journalism</a></li>
+              <li><a onclick="openArticle('students-digital')">How AI tools are entering classrooms across the world</a></li>
+              <li><a onclick="openArticle('longform-journalism')">The return of long-form reporting in digital media</a></li>
+              <li><a onclick="openArticle('ai-news')">What readers want from modern news platforms</a></li>
+              <li><a onclick="openArticle('markets-tech')">The rise of subscription-first journalism models</a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-section">
+            <h2>Opinion</h2>
+            <ul>
+              <li>
+                <a onclick="openArticle('opinion-tech')">Technology should support journalism — not replace its human voice</a>
+                <div class="author">By Minh Anh</div>
+              </li>
+              <li>
+                <a onclick="openArticle('trust-media')">The future of trust in media depends on transparency</a>
+                <div class="author">By Hoàng Nam</div>
+              </li>
+              <li>
+                <a onclick="openArticle('young-readers')">Why younger readers are changing the news industry</a>
+                <div class="author">By Thu Hà</div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="newsletter">
+            <h3>Sign up for updates</h3>
+            <p>Get the biggest stories delivered straight to your inbox.</p>
+            <input type="email" placeholder="Enter your email" />
+            <button>Subscribe</button>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLE DETAIL -->
+  <section id="articleDetail" class="page">
+    <div class="container">
+      <div class="article-page">
+        <a class="back-btn" onclick="showPage('home')">← Back to homepage</a>
+        <div class="category" id="detailCategory">Technology</div>
+        <h1 id="detailTitle">Article title</h1>
+        <p class="lead" id="detailLead">Lead paragraph</p>
+        <div class="meta" id="detailMeta">By Editorial Team • 26 Mar 2026 • 10 min read</div>
+        <img id="detailImage" src="" alt="Article image" />
+        <div class="article-content" id="detailContent"></div>
+
+        <div class="related">
+          <h3>Related stories</h3>
+          <div class="related-grid">
+            <div class="related-card" onclick="openArticle('future-journalism')">
+              <img src="https://picsum.photos/500/300?random=30" alt="">
+              <div class="category">Media</div>
+              <h4>Five major shifts changing the future of online journalism</h4>
+            </div>
+            <div class="related-card" onclick="openArticle('trust-media')">
+              <img src="https://picsum.photos/500/300?random=31" alt="">
+              <div class="category">Opinion</div>
+              <h4>The future of trust in media depends on transparency</h4>
+            </div>
+            <div class="related-card" onclick="openArticle('young-readers')">
+              <img src="https://picsum.photos/500/300?random=32" alt="">
+              <div class="category">Opinion</div>
+              <h4>Why younger readers are changing the news industry</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>News</h4>
+          <a href="#">World</a>
+          <a href="#">Politics</a>
+          <a href="#">Business</a>
+        </div>
+        <div>
+          <h4>Culture</h4>
+          <a href="#">Books</a>
+          <a href="#">Film</a>
+          <a href="#">Music</a>
+        </div>
+        <div>
+          <h4>Sport</h4>
+          <a href="#">Football</a>
+          <a href="#">Tennis</a>
+          <a href="#">Formula 1</a>
+        </div>
+        <div>
+          <h4>About</h4>
+          <a href="#">Contact us</a>
+          <a href="#">Privacy policy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 Global Chronicle. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const articles = {
+      "ai-news": {
+        category: "Technology",
+        title: "Artificial intelligence is transforming how readers consume the news",
+        lead: "From personalised recommendations to automated summaries, AI is rapidly changing the relationship between media, trust and public information.",
+        meta: "By Editorial Team • 26 Mar 2026 • 12 min read",
+        image: "https://picsum.photos/1000/500?random=11",
+        content: `
+          <p>Artificial intelligence is no longer a distant concept in journalism. It has already become a powerful tool shaping how news is produced, distributed and consumed across the globe. What once seemed like a futuristic idea is now deeply woven into the daily operations of modern media organisations.</p>
+          <p>Across digital platforms, AI systems are being used to recommend stories, detect trending topics, summarise breaking developments and personalise the reading experience for millions of users. These tools are helping publishers react faster to shifting reader behaviour, while also changing what audiences expect from news itself.</p>
+          <h2>The rise of algorithmic news delivery</h2>
+          <p>Readers today rarely arrive at a newspaper’s homepage in the same way they once did. Instead, much of what they see is determined by recommendation systems, search engines, mobile alerts and social platforms. AI now plays a major role in deciding which stories appear first, which topics trend and which headlines attract attention.</p>
+          <p>This shift has made journalism more immediate and more accessible. Yet it has also raised important concerns. If readers are shown only the stories that algorithms believe they will click on, does that narrow the public conversation? If engagement becomes the dominant measure of value, what happens to stories that are important but less popular?</p>
+          <p>Editors say this is one of the central tensions of digital journalism today: balancing relevance with responsibility. A homepage designed by human editors reflects judgment, hierarchy and editorial values. A homepage shaped by machine learning reflects patterns, probabilities and behavioural prediction.</p>
+          <h2>Speed versus depth</h2>
+          <p>One of the most obvious benefits of AI in the newsroom is speed. Automated tools can now scan data, identify anomalies, draft short summaries and assist with live coverage in ways that save journalists time. During elections, sports events and financial updates, this can be particularly useful.</p>
+          <p>But journalism is not only about being first. It is also about being accurate, fair and meaningful. Reporters and editors continue to stress that while AI can accelerate workflows, it cannot replace human context, moral judgment or investigative instinct. A machine may recognise a trend, but it cannot fully understand its social consequences.</p>
+          <p>In this sense, AI is best understood not as a substitute for journalism, but as an extension of it — a tool that can support reporting when used carefully and critically.</p>
+          <h2>Trust in an automated media environment</h2>
+          <p>As audiences become more aware of how algorithms shape information, trust has become a defining issue. Readers increasingly want to know why certain stories are shown to them, how content is prioritised and whether automation is influencing what they see without their knowledge.</p>
+          <p>Transparency may therefore become one of the most important values in the next era of digital journalism. Some publishers are already experimenting with clearer explanations of recommendation systems, editorial processes and AI-assisted content production.</p>
+          <p>Ultimately, the future of news will not be decided by technology alone. It will be shaped by the choices journalists, editors, developers and readers make together — choices about fairness, truth, access and the kind of public conversation society wants to build.</p>
+        `
+      },
+
+      "ethics-ai": {
+        category: "World",
+        title: "Global leaders debate the ethics of algorithmic decision-making",
+        lead: "Concerns continue to rise over transparency, bias and the future of public accountability.",
+        meta: "By Global Desk • 26 Mar 2026 • 10 min read",
+        image: "https://picsum.photos/1000/500?random=12",
+        content: `
+          <p>As artificial intelligence expands into public institutions, ethical questions are moving rapidly from academic debate to political urgency. Governments, universities and global organisations are now being forced to confront a difficult question: who is responsible when machines begin to influence human decisions at scale?</p>
+          <p>From hiring systems and predictive policing to healthcare triage and education assessment, algorithmic tools are increasingly being trusted to sort, rank and recommend. Supporters argue that these systems can improve efficiency and reduce human inconsistency. Critics warn that they may reproduce inequality in ways that are harder to detect and even harder to challenge.</p>
+          <h2>Bias hidden inside systems</h2>
+          <p>One of the biggest concerns surrounding AI is that it can inherit bias from the data it is trained on. If historical systems were unfair, then the digital systems built on that history may quietly preserve the same patterns under the appearance of neutrality.</p>
+          <p>Researchers have shown that automated tools can reflect racial, economic and gender-based disparities depending on how they are designed and deployed. In some cases, these patterns are not visible to the public at all, because the systems operate behind closed institutional structures.</p>
+          <p>This creates a serious democratic problem: if people do not understand how decisions are being made, how can they question or appeal them?</p>
+          <h2>The accountability gap</h2>
+          <p>Political leaders are now debating whether new legal frameworks are needed to govern algorithmic decision-making. Some argue for independent oversight, public auditing and stronger transparency requirements. Others caution that regulation must not become so rigid that it blocks innovation.</p>
+          <p>Yet even where governments agree on the need for rules, implementation remains difficult. Algorithms are often developed by private companies but used by public institutions, creating a blurred boundary between corporate design and civic responsibility.</p>
+          <p>The ethical challenge is therefore not only technical. It is social, legal and philosophical. It asks whether societies are willing to accept systems that can shape opportunity and risk without always offering explanation.</p>
+        `
+      },
+
+      "students-digital": {
+        category: "Education",
+        title: "Students are relying on digital platforms more than ever before",
+        lead: "Classrooms are evolving as schools adopt online tools and AI-powered learning systems.",
+        meta: "By Education Desk • 26 Mar 2026 • 9 min read",
+        image: "https://picsum.photos/1000/500?random=13",
+        content: `
+          <p>For today’s students, digital technology is no longer an optional supplement to learning. It has become part of the basic educational environment. Homework is submitted online, lessons are shared through learning platforms and revision often happens through videos, apps and AI-based tools rather than traditional textbooks alone.</p>
+          <p>This transformation has accelerated rapidly in recent years, driven by changes in school infrastructure, student habits and the broader digitalisation of daily life. Teachers say the classroom has not disappeared — but it has undeniably expanded beyond physical walls.</p>
+          <h2>A new model of learning</h2>
+          <p>Digital platforms offer clear advantages. Students can revisit recorded lessons, access interactive exercises and receive instant feedback in ways that traditional methods often cannot provide. For many learners, especially those who are shy or need more time to process information, these tools can create a more flexible and personalised experience.</p>
+          <p>AI-powered systems are also beginning to tailor educational content to individual performance. In theory, this allows students to move at their own pace and focus on areas where they need the most improvement.</p>
+          <h2>The challenge of dependence</h2>
+          <p>But educators are increasingly concerned about overdependence. When students rely too heavily on ready-made summaries, instant answers or automated explanations, the line between support and substitution becomes blurred.</p>
+          <p>Teachers warn that digital convenience can sometimes weaken deeper forms of concentration, patience and independent thinking. The issue is not technology itself, but how it is used. A useful tool can quickly become a shortcut if students stop engaging critically with what they are learning.</p>
+          <p>There are also concerns about inequality. Not all students have equal access to stable internet, personal devices or quiet spaces to study. In this sense, digital education can expand opportunity for some while unintentionally widening gaps for others.</p>
+        `
+      },
+
+      "longform-journalism": {
+        category: "Culture",
+        title: "Why long-form journalism still matters in the age of short attention spans",
+        lead: "Deep reporting remains essential despite the rapid pace of modern media consumption.",
+        meta: "By Culture Desk • 26 Mar 2026 • 11 min read",
+        image: "https://picsum.photos/1000/500?random=14",
+        content: `
+          <p>In a digital culture shaped by notifications, scrolling and shrinking attention spans, long-form journalism can appear almost old-fashioned. Yet for many readers, it remains one of the few places where complexity is still allowed to exist.</p>
+          <p>Long-form reporting offers something that short updates often cannot: depth, continuity and perspective. It does not simply tell readers what happened. It asks why it happened, who it affects and what larger systems are at work beneath the surface.</p>
+          <h2>Beyond the headline</h2>
+          <p>Fast news has become essential in the modern media ecosystem. Readers want to know what is happening immediately, and news organisations must respond quickly. But speed alone does not guarantee understanding.</p>
+          <p>Some of the most important issues of our time — climate change, inequality, war, migration, education, digital surveillance — cannot be meaningfully understood in a few paragraphs. They require context, history, testimony and patient explanation.</p>
+          <p>This is where long-form journalism continues to matter. It creates room for evidence, contradiction and narrative complexity. It respects the idea that readers are capable of thinking beyond the headline.</p>
+          <h2>The human side of reporting</h2>
+          <p>Another strength of long-form work is its ability to restore human depth to public issues. Statistics can describe a crisis, but detailed storytelling can reveal what it feels like to live inside one.</p>
+          <p>Whether profiling a family affected by housing insecurity or tracing the experiences of workers inside a changing economy, long-form journalism helps bridge the distance between abstract events and lived reality.</p>
+        `
+      },
+
+      "markets-tech": {
+        category: "Business",
+        title: "Markets react cautiously to fresh developments in the tech sector",
+        lead: "Investors are watching closely as major firms adjust their strategies in response to AI disruption.",
+        meta: "By Business Desk • 26 Mar 2026 • 8 min read",
+        image: "https://picsum.photos/1000/500?random=15",
+        content: `
+          <p>Financial markets have responded cautiously to a new wave of AI-related investment, restructuring and competition in the technology sector. While enthusiasm around innovation remains high, uncertainty continues to shape investor sentiment.</p>
+          <p>Major firms are racing to integrate artificial intelligence into products, services and internal operations. For some companies, this has created fresh momentum and strong public interest. For others, it has exposed pressure to adapt quickly or risk falling behind.</p>
+          <h2>Investors between optimism and caution</h2>
+          <p>Market analysts say the current mood is defined by contradiction. On one hand, AI is widely viewed as one of the most important growth drivers of the decade. On the other, many investors are questioning which companies will genuinely benefit and which are simply following hype.</p>
+          <p>Share prices have been sensitive to announcements involving AI partnerships, product launches and hiring shifts. Yet the long-term business value of many of these moves remains difficult to measure with confidence.</p>
+        `
+      },
+
+      "digital-law": {
+        category: "Politics",
+        title: "Lawmakers propose stricter guidelines for digital platforms",
+        lead: "New legislation could reshape how online media companies manage content and misinformation.",
+        meta: "By Politics Desk • 26 Mar 2026 • 9 min read",
+        image: "https://picsum.photos/1000/500?random=16",
+        content: `
+          <p>Governments around the world are intensifying efforts to regulate digital platforms, as concerns grow over misinformation, harmful content and the power of private technology companies in shaping public discourse.</p>
+          <p>The latest proposals suggest a shift away from voluntary moderation standards toward clearer legal obligations. Lawmakers argue that digital spaces have become too influential to remain governed primarily by internal company policy.</p>
+          <h2>A new regulatory phase</h2>
+          <p>Supporters of tighter rules say online platforms now function as central public spaces where elections, social movements and cultural debates are increasingly shaped. In that environment, decisions about visibility, removal and amplification carry enormous civic consequences.</p>
+          <p>Proposed legislation focuses on transparency, accountability and user protection. Some measures would require platforms to explain moderation decisions more clearly, while others would increase oversight of recommendation systems and advertising practices.</p>
+        `
+      },
+
+      "sport-season": {
+        category: "Sport",
+        title: "National teams prepare for a demanding season ahead",
+        lead: "Coaches and players are facing pressure to adapt quickly in a highly competitive landscape.",
+        meta: "By Sport Desk • 26 Mar 2026 • 8 min read",
+        image: "https://picsum.photos/1000/500?random=17",
+        content: `
+          <p>National teams across multiple competitions are entering a decisive phase of preparation, with coaching staff, analysts and players all facing rising expectations ahead of a demanding international calendar.</p>
+          <p>What once looked like a routine build-up now feels more intense. Fixture congestion, tactical innovation and growing physical demands have made preparation more complex than ever before.</p>
+          <h2>Preparation beyond the pitch</h2>
+          <p>Modern elite sport is no longer defined solely by technical training. Teams are now investing heavily in data analysis, recovery science, mental conditioning and opposition scouting in order to gain even the smallest competitive edge.</p>
+          <p>Managers say the difference between success and failure often lies not in raw talent alone, but in adaptability. The teams that perform best are increasingly those that can respond quickly to changing circumstances and maintain consistency under pressure.</p>
+        `
+      },
+
+      "climate-policy": {
+        category: "Environment",
+        title: "Climate policy moves back to the centre of international debate",
+        lead: "Experts warn that the next decade will be critical in determining the pace of environmental change.",
+        meta: "By Environment Desk • 26 Mar 2026 • 10 min read",
+        image: "https://picsum.photos/1000/500?random=18",
+        content: `
+          <p>Climate change has returned to the centre of international political debate as governments confront rising public pressure, scientific warnings and the visible consequences of environmental instability.</p>
+          <p>Extreme weather, energy transition challenges and economic uncertainty are forcing policymakers to revisit climate commitments with renewed urgency. What was once framed as a long-term issue is increasingly being recognised as a present and structural crisis.</p>
+          <h2>The policy gap</h2>
+          <p>Despite years of international summits and declarations, many experts argue that there remains a significant gap between political ambition and practical implementation. Targets may be announced with confidence, but delivery often depends on complex domestic trade-offs involving industry, infrastructure and public support.</p>
+          <p>Some governments are moving more quickly than others, but the broader picture remains uneven. The pace of transition is shaped not only by science, but by economics, electoral politics and geopolitical tension.</p>
+        `
+      },
+
+      "future-journalism": {
+        category: "Media",
+        title: "Five major shifts changing the future of online journalism",
+        lead: "The digital news industry is undergoing a period of structural transformation.",
+        meta: "By Media Desk • 26 Mar 2026 • 9 min read",
+        image: "https://picsum.photos/1000/500?random=19",
+        content: `
+          <p>The future of journalism is not being shaped by a single technological breakthrough, but by several structural shifts happening at once. Together, they are changing how news is funded, produced and experienced.</p>
+          <p>Subscription models, mobile-first reading habits, AI-assisted production, platform dependency and trust-based branding are all redefining the digital news landscape.</p>
+          <h2>Changing business models</h2>
+          <p>Advertising alone is no longer enough for many publishers. As a result, more organisations are turning to subscriptions, memberships and niche audiences to build financial sustainability.</p>
+          <p>This creates new opportunities but also new tensions. Journalism must remain accessible while also finding ways to survive economically in an increasingly competitive attention economy.</p>
+        `
+      },
+
+      "opinion-tech": {
+        category: "Opinion",
+        title: "Technology should support journalism — not replace its human voice",
+        lead: "Automation can improve efficiency, but journalism remains a fundamentally human craft.",
+        meta: "By Minh Anh • 26 Mar 2026 • 8 min read",
+        image: "https://picsum.photos/1000/500?random=20",
+        content: `
+          <p>Technology can help journalists work faster, search deeper and publish smarter — but it should never be mistaken for the thing journalism itself is made of. At its core, reporting is not just a technical activity. It is a human one.</p>
+          <p>Machines can organise information. They can detect patterns, suggest headlines and summarise events. But journalism is also about doubt, interpretation, ethical judgment and emotional intelligence — qualities that do not emerge from code alone.</p>
+          <h2>The danger of confusion</h2>
+          <p>The current enthusiasm surrounding AI has encouraged some institutions to imagine that efficiency is the same thing as quality. It is not. Speed matters, but journalism must also remain capable of listening, verifying and understanding complexity.</p>
+          <p>When technology is treated as a replacement rather than a support system, the risk is not only weaker writing. It is weaker public understanding.</p>
+        `
+      },
+
+      "trust-media": {
+        category: "Opinion",
+        title: "The future of trust in media depends on transparency",
+        lead: "Readers are more likely to trust journalism when they understand how it is made.",
+        meta: "By Hoàng Nam • 26 Mar 2026 • 8 min read",
+        image: "https://picsum.photos/1000/500?random=21",
+        content: `
+          <p>Trust in media is no longer something news organisations can assume. In a fragmented digital environment filled with misinformation, speed and noise, trust must be built deliberately and maintained continuously.</p>
+          <p>One of the most effective ways to do that may be transparency. Readers are more likely to believe journalism when they understand how reporting was done, what evidence supports it and what editorial choices shaped the final story.</p>
+          <h2>Explaining the process</h2>
+          <p>For decades, journalism often presented itself as a finished product without showing much of the process behind it. But today’s audiences are more sceptical and more curious. They want to know who is speaking, how facts were verified and why certain perspectives were included.</p>
+          <p>Transparency does not guarantee trust on its own, but it creates the conditions for a more honest relationship between publisher and reader.</p>
+        `
+      },
+
+      "young-readers": {
+        category: "Opinion",
+        title: "Why younger readers are changing the news industry",
+        lead: "A new generation of readers is reshaping how journalism is written, shared and valued.",
+        meta: "By Thu Hà • 26 Mar 2026 • 8 min read",
+        image: "https://picsum.photos/1000/500?random=22",
+        content: `
+          <p>Younger audiences are not simply consuming news differently — they are redefining what counts as a meaningful news experience in the first place. Their habits, expectations and values are quietly reshaping the structure of the media industry.</p>
+          <p>They are more likely to encounter journalism through mobile devices, social platforms, short-form explainers and visual storytelling than through traditional front pages or print-style layouts. But this does not mean they care less about serious information. It means they engage with it differently.</p>
+          <h2>New expectations</h2>
+          <p>Younger readers often expect content to be more immediate, interactive and context-rich. They want journalism that is not only informative, but accessible and responsive to how they actually live online.</p>
+          <p>This creates both opportunity and pressure for publishers. Media organisations must experiment with new forms without reducing serious reporting into something shallow or disposable.</p>
+        `
+      }
+    };
+
+    function showPage(pageId) {
+      document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+      });
+      document.getElementById(pageId).classList.add("active");
+      window.scrollTo(0, 0);
+    }
+
+    function openArticle(articleId) {
+      const article = articles[articleId];
+      if (!article) return;
+
+      document.getElementById("detailCategory").textContent = article.category;
+      document.getElementById("detailTitle").textContent = article.title;
+      document.getElementById("detailLead").textContent = article.lead;
+      document.getElementById("detailMeta").textContent = article.meta;
+      document.getElementById("detailImage").src = article.image;
+      document.getElementById("detailContent").innerHTML = article.content;
+
+      showPage("articleDetail");
+    }
+
+    function searchArticle() {
+      const keyword = document.getElementById("searchInput").value.toLowerCase().trim();
+
+      for (let key in articles) {
+        if (
+          articles[key].title.toLowerCase().includes(keyword) ||
+          articles[key].category.toLowerCase().includes(keyword)
+        ) {
+          openArticle(key);
+          return;
+        }
+      }
+
+      alert("Không tìm thấy bài báo phù hợp!");
+    }
+  </script>
+</body>
+</html>
